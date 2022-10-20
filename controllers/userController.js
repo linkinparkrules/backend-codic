@@ -4,7 +4,7 @@ const {findUsername} = require('../database/user.js');
 const login = async (username, password) => {
     const user = await findUsername(username);
     if (!user) {
-        throw new Error ("user does not exist !");
+        throw new Error ("User does not exist!");
     }
 
     const token = jwt.sign(
