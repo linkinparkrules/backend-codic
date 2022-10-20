@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const {findUsername} = require('../database/user.js');
 
-const login = (username, password) => {
-    const user = findUsername(username);
+const login = async (username, password) => {
+    const user = await findUsername(username);
     if (!user) {
         throw new Error ("user does not exist !");
     }
