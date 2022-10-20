@@ -5,4 +5,4 @@ const findUsername = async (username) => {
     return user;
 }
 
-module.exports = findUsername;
+module.exports = {findUsername};
