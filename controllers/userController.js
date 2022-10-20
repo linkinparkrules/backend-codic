@@ -8,7 +8,7 @@ const login = async (username, password) => {
     }
 
     const token = jwt.sign(
-        {username: username, password: password},
+        {username: username},
         "My_Private_Key",
         {expiresIn: "3600s"}
     );
