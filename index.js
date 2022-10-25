@@ -10,20 +10,6 @@ app.use(cors({
     origin: "http://localhost:3000"
 }))
 
-// const jwt = require('jsonwebtoken');
-// app.post('/login', (req,res) => {
-//     const username = req.body.username;
-//     const token = jwt.sign(
-//         {username: username},
-//         "myPrivateKey",
-//         {expiresIn: 3600}
-//     )
-//     res.json({
-//         username:username,
-//         token:token
-//     })
-// });
-
 connectToDb();
 
 app.use(router);

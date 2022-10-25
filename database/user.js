@@ -5,4 +5,9 @@ const findUsername = async (username) => {
     return user;
 }
 
-module.exports = {findUsername};
+const insertUser = async (user) => {
+    await db.user.insertOne(user);
+    return user;
+}
+
+module.exports = {findUsername, insertUser};
