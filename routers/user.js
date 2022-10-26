@@ -13,7 +13,7 @@ userRouter.post('/login', async (req,res) => {
 
 userRouter.post('/signup', async (req,res) => {
     if(!req.body.password || req.body.password.length < 8) {
-        res.status(400).send('password must contain at least 8 characters');
+        res.status(400).send('Password must contain at least 8 characters');
         return;
     };
     
