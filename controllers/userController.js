@@ -25,7 +25,7 @@ const login = async (username, password) => {
     });
 }
 
-const signup = async (username, password) => {
+const signup = async (username, email, password) => {
     const user = await findUsername(username);
     if (user) {
         throw new Error("User already existed!");
@@ -33,6 +33,7 @@ const signup = async (username, password) => {
     const { salt, hashedPassword } = encryptPassword(password);
     const addNewUser = await insertUser({
         username: username,
+        email: email,
         salt: salt,
         hashedPassword: hashedPassword
     })

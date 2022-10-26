@@ -18,7 +18,7 @@ userRouter.post('/signup', async (req,res) => {
     };
     
     try {
-        const user = await signup(req.body.username, req.body.password);
+        const user = await signup(req.body.username,req.body.email, req.body.password);
         res.json(user);
     } catch (err) {
         res.status(409).send(err.message);
