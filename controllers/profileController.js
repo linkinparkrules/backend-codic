@@ -9,7 +9,9 @@ const verifyToken = (token) => {
         if (err) {
             throw new Error("Invalid token!");
         } else {
+            console.log(decoded);
             const user = await findUsername(decoded.username);
+            console.log(user);
             return {
                 username: user.username,
                 email: user.email
