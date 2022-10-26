@@ -2,7 +2,7 @@ const express = require('express');
 const profileRouter = express.Router();
 const {verifyToken} = require('../controllers/profileController.js');
 
-profileRouter.get('/me', async (req,res) => {
+profileRouter.get('/', async (req,res) => {
     try {
         const user = await verifyToken(req.headers.authorization);
         res.json(user);
