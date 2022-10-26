@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const {findUsername} = require('../database/user.js');
+const {findById} = require('../database/user.js');
 
 const verifyToken = (token) => {
     if (!token) {
@@ -9,9 +9,8 @@ const verifyToken = (token) => {
         if (err) {
             throw new Error("Invalid token!");
         } else {
-            console.log(decoded);
-            const user = await findUsername(decoded.username);
-            console.log(user);
+            // console.log(decoded);
+            const user = await findById(decoded.userId);
             return {
                 username: user.username,
                 email: user.email
