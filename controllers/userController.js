@@ -25,7 +25,7 @@ const login = async (username, password) => {
     });
 }
 
-const register = async (username, password) => {
+const signup = async (username, password) => {
     const user = await findUsername(username);
     if (user) {
         throw new Error("User already existed!");
@@ -53,4 +53,4 @@ const verifyPassword = (password, user) => {
     return hashedPW == user.hashedPassword;
 }
 
-module.exports = { login, register };
+module.exports = { login, signup };
