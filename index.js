@@ -7,9 +7,13 @@ const cors = require('cors');
 const port = process.env.PORT;
 // const port = 5001;
 app.use(express.json());
-app.use(cors({
-    origin: "http://localhost:3000"
-}))
+
+const whitelist = ["http://localhost:3000", "https://codic.vercel.app"];
+app.use((req,res) => {
+    if (whitelist.includes(req.headers.origin)) {
+        return cors({origin: req.headers.origin})
+    }
+})
 
 connectToDb();
 
