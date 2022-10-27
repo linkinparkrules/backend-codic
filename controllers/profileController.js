@@ -1,22 +1,20 @@
 const jwt = require('jsonwebtoken');
 const {findById} = require('../database/user.js');
 
-const verifyToken = (token) => {
+const verifyToken = async (token) => {
     if (!token) {
         throw new Error("Missing token!");
     }
-    jwt.verify(token, "My_Private_Key", async(err, decoded) => {
-        if (err) {
-            throw new Error("Invalid token!");
-        } else {
-            // console.log(decoded);
-            const user = await findById(decoded.userId);
-            return {
-                username: user.username,
-                email: user.email
-            };
-        };
-    });
+    try {
+        const result = jwt.verify(token, "My_Private_Key");
+        const user = await findById(result.userId);
+        return({
+            username: user.username,
+            email: user.email
+        })
+    } catch (err) {
+        throw new Error("Invalid token!");
+    }
 };
 
 module.exports = {verifyToken};
