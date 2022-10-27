@@ -6,7 +6,6 @@ profileRouter.get('/', async (req,res) => {
     try {
         const user = await verifyToken(req.headers.authorization);
         // console.log(user);
-        console.log(req.headers.origin);
         res.json(user);
     } catch (err) {
         res.status(403).send(err.message);
