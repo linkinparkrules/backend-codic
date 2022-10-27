@@ -1,8 +1,6 @@
 const express = require('express');
 const profileRouter = express.Router();
 const {verifyToken} = require('../controllers/profileController.js');
-const jwt = require('jsonwebtoken');
-const {findById} = require('../database/user.js');
 
 profileRouter.get('/', async (req,res) => {
     try {
