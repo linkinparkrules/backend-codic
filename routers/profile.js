@@ -7,7 +7,7 @@ const {findById} = require('../database/user.js');
 profileRouter.get('/', async (req,res) => {
     try {
         const user = await verifyToken(req.headers.authorization);
-        console.log(user);
+        // console.log(user);
         res.json(user);
     } catch (err) {
         res.status(403).send(err.message);
