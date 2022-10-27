@@ -8,7 +8,7 @@ const port = process.env.PORT;
 // const port = 5001;
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:3000", "https://codic.vercel.app/"
+    origin: "http://localhost:3000"
 }))
 
 connectToDb();
