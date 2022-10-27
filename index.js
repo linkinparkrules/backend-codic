@@ -8,21 +8,26 @@ const port = process.env.PORT;
 // const port = 5001;
 app.use(express.json());
 
-
-// const whitelist = ["http://localhost:3000", "https://codic.vercel.app"];
-// app.use(cors({origin: "http://localhost:3000"}))
-app.use((req, res, next) => {
-    const allowedOrigins = ["http://localhost:3000", "https://codic.vercel.app"];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
+// app.use((req, res, next) => {
+//     const allowedOrigins = ["http://localhost:3000", "https://codic.vercel.app"];
+//     const origin = req.headers.origin;
+//     if (allowedOrigins.includes(origin)) {
+//          res.setHeader('Access-Control-Allow-Origin', origin);
+//     }
+//     return next();
+// });
+const whitelist = ["http://localhost:3000", "https://codic.vercel.app"];
+const corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
     }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    return next();
-  });
+  }
+
+app.use(cors(corsOptions));
 
 connectToDb();
 
