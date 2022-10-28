@@ -8,15 +8,7 @@ const port = process.env.PORT;
 // const port = 5001;
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//     const allowedOrigins = ["http://localhost:3000", "https://codic.vercel.app"];
-//     const origin = req.headers.origin;
-//     if (allowedOrigins.includes(origin)) {
-//          res.setHeader('Access-Control-Allow-Origin', origin);
-//     }
-//     return next();
-// });
-const whitelist = ["http://localhost:3000", "https://codic.vercel.app"];
+const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://localhost:5001"];
 const corsOptions = {
     origin: function (origin, callback) {
       if (whitelist.indexOf(origin) !== -1) {
@@ -25,8 +17,7 @@ const corsOptions = {
         callback(new Error('Not allowed by CORS'))
       }
     }
-  }
-
+}
 app.use(cors(corsOptions));
 
 connectToDb();
