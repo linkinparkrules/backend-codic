@@ -2,7 +2,7 @@ const express = require('express');
 const feedBackRouter = express.Router();
 const { postFb, getFb } = require('../controllers/feedBackController');
 
-feedBackRouter.post('/contact', async (req, res) => {
+feedBackRouter.put('/contact', async (req, res) => {
   try {
     const feedback = await postFb(req.body.email, req.body.feedback);
     res.json(feedback);

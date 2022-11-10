@@ -11,7 +11,7 @@ const findByEmail = async (email) => {
 }
 
 const updateFeedBack = async (email, message) => {
-  const result = db.feedback
+  const result = await db.feedback
     .updateOne({
       email: email
     }, {
