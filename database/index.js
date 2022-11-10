@@ -8,6 +8,7 @@ const connectToDb = () => {
         const database = await client.db("codic");
         db.user = database.collection("user");
         db.element = database.collection("element");
+        db.feedback = database.collection("feedback");
     })
 };
 
