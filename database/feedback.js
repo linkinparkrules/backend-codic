@@ -6,8 +6,8 @@ const postFeedBack = async (user) => {
 }
 
 const findByEmail = async (email) => {
-  await db.feedback.findOne({ email: email });
-  return email;
+  const existed = await db.feedback.findOne({ email: email });
+  return existed;
 }
 
 const updateFeedBack = async (email, message) => {
