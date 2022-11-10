@@ -16,7 +16,7 @@ const updateFeedBack = async (email, message) => {
       email: email
     }, {
       $set: {
-        message: message
+        feedback: message
       }
     });
   return result;
