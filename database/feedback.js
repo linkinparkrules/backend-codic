@@ -1,4 +1,4 @@
-const { db } = require('/');
+const { db } = require('./index');
 
 const postFeedBack = async (user) => {
   await db.feedback.insertOne(user);
