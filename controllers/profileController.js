@@ -8,9 +8,11 @@ const verifyToken = async (token) => {
     try {
         const result = jwt.verify(token, "My_Private_Key");
         const user = await findById(result.userId);
+        // console.log(user);
         return({
             username: user.username,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin
         })
     } catch (err) {
         throw new Error("Invalid token!");
