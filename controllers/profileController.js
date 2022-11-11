@@ -17,7 +17,7 @@ const verifyToken = async (token) => {
         return ({
             username: user.username,
             email: user.email,
-            isAdmin: checkAdmin
+            isAdmin: checkAdmin()
         })
     } catch (err) {
         throw new Error("Invalid token!");
