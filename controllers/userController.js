@@ -6,11 +6,11 @@ const login = async (username, password) => {
     const user = await findUsername(username);
     // Step1: check if user is existed or not
     if (!user) {
-        throw new Error("User does not exist!");
+        throw new Error("Người dùng không tồn tại!");
     }
     // Step2: check password correct or not
     if (!verifyPassword(password, user)) {
-        throw new Error("Wrong password!")
+        throw new Error("Sai mật khẩu!")
     }
 
     const token = jwt.sign(
@@ -28,7 +28,7 @@ const login = async (username, password) => {
 const signup = async (username, email, password) => {
     const user = await findUsername(username);
     if (user) {
-        throw new Error("User already existed!");
+        throw new Error("Người dùng này đã tồn tại!");
     }
     const { salt, hashedPassword } = encryptPassword(password);
     const addNewUser = await insertUser({

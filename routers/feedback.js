@@ -7,7 +7,7 @@ feedBackRouter.put('/contact', async (req, res) => {
     const feedback = await postFb(req.body.email, req.body.feedback);
     res.json(feedback);
   } catch (err) {
-    res.status(404).send(err.message);
+    res.status(409).send(err.message);
   };
 });
 
