@@ -5,7 +5,7 @@ const showTagType = async (tagType) => {
     return tag;
 }
 
-const addNewTag = async (name, meaning, definition, example) => {
+const addNewTag = async (name, meaning, definition, example, tagType) => {
     const existed = await findTagByName(name);
     if (existed) {
         throw new Error("thẻ này đã tồn tại!");
@@ -14,7 +14,8 @@ const addNewTag = async (name, meaning, definition, example) => {
         name: name,
         meaning: meaning,
         definition: definition,
-        example: example
+        example: example,
+        tagType: tagType
     });
 }
 

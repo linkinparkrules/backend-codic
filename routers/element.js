@@ -23,7 +23,8 @@ elementRouter.post('/', async (req, res) => {
             req.body.name, 
             req.body.meaning, 
             req.body.definition, 
-            req.body.example
+            req.body.example,
+            req.body.tagType
         );
         res.json(info);
     } catch (err) {
