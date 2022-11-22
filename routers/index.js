@@ -7,7 +7,7 @@ const feedBackRouter = require('./feedback.js');
 
 router.use('/', userRouter);
 router.use('/profile/me', profileRouter);
-router.use('/', elementRouter);
+router.use('/exercise/element', elementRouter);
 router.use('/', feedBackRouter);
 
 module.exports = router;

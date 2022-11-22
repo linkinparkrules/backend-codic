@@ -1,8 +1,8 @@
 const express = require('express');
 const elementRouter = express.Router();
-const {showTagType} = require('../controllers/elementController');
+const {showTagType, addNewTag} = require('../controllers/elementController');
 
-elementRouter.get('/exercise/element', async (req,res) => {
+elementRouter.get('/', async (req,res) => {
     try {
         const htmlTag = await showTagType("html");
         const cssTag  = await showTagType("css");
@@ -16,5 +16,19 @@ elementRouter.get('/exercise/element', async (req,res) => {
         res.status(404).send(err.message);
     }
 });
+
+elementRouter.post('/', async (req, res) => {
+    try {
+        const info = await addNewTag(
+            req.body.name, 
+            req.body.meaning, 
+            req.body.definition, 
+            req.body.example
+        );
+        res.json(info);
+    } catch (err) {
+        res.status(409).send(err.message);
+    }
+})
 
 module.exports = elementRouter;
