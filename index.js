@@ -4,11 +4,11 @@ const router = require('./routers');
 const {connectToDb} = require('./database');
 const cors = require('cors');
 
-// const port = process.env.PORT;
-const port = 5001;
+const port = process.env.PORT;
+// const port = 5001;
 app.use(express.json());
 
-app.options('*', cors())
+// app.options('*', cors())
 const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://localhost:5001"];
 const corsOptions = {
     origin: function (origin, callback) {
