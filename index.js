@@ -4,21 +4,21 @@ const router = require('./routers');
 const {connectToDb} = require('./database');
 const cors = require('cors');
 
-const port = process.env.PORT;
-// const port = 5001;
+// const port = process.env.PORT;
+const port = 5001;
 app.use(express.json());
 
-// app.options('*', cors())
+app.options('*', cors())
 const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://localhost:5001"];
-const corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, false)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-}
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//       if (whitelist.indexOf(origin) !== -1) {
+//         callback(null, false)
+//       } else {
+//         callback(new Error('Not allowed by CORS'))
+//       }
+//     }
+// }
 
 app.use(function(req, res, next) {
   // Set the Access-Control-Allow-Origin header to allow requests from any domain
@@ -30,8 +30,8 @@ app.use(function(req, res, next) {
   // Call the next middleware in the chain
   next();
 });
-
-app.use(cors(corsOptions));
+app.use(cors())
+// app.use(cors(corsOptions));
 
 connectToDb();
 
