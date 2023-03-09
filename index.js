@@ -9,7 +9,7 @@ const port = 5001;
 app.use(express.json());
 
 // app.options('*', cors())
-const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://localhost:5001"];
+// const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://localhost:5001"];
 // const corsOptions = {
 //     origin: function (origin, callback) {
 //       if (whitelist.indexOf(origin) !== -1) {
@@ -20,16 +20,16 @@ const whitelist = ["http://localhost:3000", "https://codic.vercel.app", "http://
 //     }
 // }
 
-app.use(function(req, res, next) {
-  // Set the Access-Control-Allow-Origin header to allow requests from any domain
-  res.header("Access-Control-Allow-Origin", "https://codic.vercel.app");
-  // Set the Access-Control-Allow-Methods header to allow POST and GET requests
-  res.header("Access-Control-Allow-Methods", "POST, GET");
-  // Set the Access-Control-Allow-Headers header to allow requests with the "Content-Type" header
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  // Call the next middleware in the chain
-  next();
-});
+// app.use(function(req, res, next) {
+//   // Set the Access-Control-Allow-Origin header to allow requests from any domain
+//   res.header("Access-Control-Allow-Origin", "https://codic.vercel.app");
+//   // Set the Access-Control-Allow-Methods header to allow POST and GET requests
+//   res.header("Access-Control-Allow-Methods", "POST, GET");
+//   // Set the Access-Control-Allow-Headers header to allow requests with the "Content-Type" header
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+//   // Call the next middleware in the chain
+//   next();
+// });
 
 app.use(cors({origin: "https://codic.vercel.app"}))
 // app.use(cors(corsOptions));
